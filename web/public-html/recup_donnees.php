@@ -1,10 +1,11 @@
 <?php
-if (isset($_POST['submit'])){
-  $nom = $_POST['nom'];
-  $prenom = $_POST['prenom'];
-  $sexe = $_POST['sexe'];
-  echo '<h3>infos</h3>';
-  echo 'Nom: ' . $nom . 'Prenom: ' . $prenom . 'Sexe: ' . $sexe;
-}
-echo 'not set'
+
+$objetPdo = new PDO('mysql:host=localhost;dbname=woody;charset=utf8', 'root', 'root');
+
+$pdoStat = $objetPdo->prepare('SELECT * FROM clients');
+
+$request = $pdoStat->execute();
+
+$clients = $pdoStat->fetchAll();
+
 ?>
