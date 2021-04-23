@@ -16,42 +16,19 @@
 -- Structure de la table `clients`
 --
 
-CREATE TABLE `clients` (
-  `id` int(11) NOT NULL,
-  `nom` varchar(255) NOT NULL,
-  `prenom` varchar(255) NOT NULL,
-  `sexe` varchar(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE clients (
+  id AUTO_INCREMENT PRIMARY KEY,
+  nom varchar(255) NOT NULL,
+  prenom varchar(255) NOT NULL,
+  sexe varchar(10) NOT NULL
+);
 
 --
 -- Déchargement des données de la table `clients`
 --
 
-INSERT INTO `clients` (`id`, `nom`, `prenom`, `sexe`) VALUES
-(1, 'Quentin', 'Servais', 'man'),
-(2, 'Ludo', 'Gorgemans', 'man');
+INSERT INTO clients (id, nom, prenom, sexe) VALUES
+('Quentin', 'Servais', 'man'),
+('Ludo', 'Gorgemans', 'man');
 
---
--- Index pour les tables déchargées
---
 
---
--- Index pour la table `clients`
---
-ALTER TABLE `clients`
-  ADD KEY `index` (`id`);
-
---
--- AUTO_INCREMENT pour les tables déchargées
---
-
---
--- AUTO_INCREMENT pour la table `clients`
---
-ALTER TABLE `clients`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
