@@ -17,10 +17,11 @@
 --
 
 CREATE TABLE clients (
-  id AUTO_INCREMENT PRIMARY KEY,
+  id int AUTO_INCREMENT,
   nom varchar(255) NOT NULL,
   prenom varchar(255) NOT NULL,
-  sexe varchar(10) NOT NULL
+  sexe varchar(10) NOT NULL,
+  PRIMARY KEY (id)
 );
 
 --
@@ -28,7 +29,7 @@ CREATE TABLE clients (
 --
 
 INSERT INTO clients (id, nom, prenom, sexe) VALUES
-('Quentin', 'Servais', 'man'),
-('Ludo', 'Gorgemans', 'man');
+(1, 'Quentin', 'Servais', 'man'),
+(2, 'Ludo', 'Gorgemans', 'man');
 
 
