@@ -1,6 +1,6 @@
 <?php
 try { 
-    $objetPdo = new PDO('mysql:host=localhost;dbname=woody;charset=utf8', 'root', 'root');
+    $objetPdo = new PDO('mysql:host=51.210.44.22:3306;dbname=woody;charset=utf8', 'root', 'root');
     echo "connect OK";
     $pdoStat = $objetPdo->prepare('SELECT * FROM clients');
     $request = $pdoStat->execute();
