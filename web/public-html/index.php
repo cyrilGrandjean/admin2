@@ -28,7 +28,7 @@ try {
     ?>
     </div>
     <h2>Devenir client</h2>
-    <form action="recup_donnees.php" method="post">
+    <form action="#" method="post">
       <p>
         <label for="nom">Votre Nom</label>
         <input type="text" id="nom" name="nom" placeholder="Jean">
@@ -48,5 +48,15 @@ try {
         <input type="submit" value="Enregistrer">
       </p>
     </form>
+    <?php
+      if (isset($_POST['nom'], $_POST['prenom'], $_POST['sexe'])){
+        $requete_insertion = $objetPdo -> prepare('INSERT INTO clients(nom, prenom, sexe) VALUES (:n, :p, :s)');
+        $requete_insertion -> execute(array(
+          'n' => $_POST["nom"],
+          'p' => $_POST["prenom"],
+          's' => $_POST["sexe"]
+        ));
+      }
+    ?>
   </body>
 </html>
