@@ -1,0 +1,8 @@
+
+view external {
+    match-clients { any; };
+    zone "l2-4.ephec-ti.be" IN {
+        type master;
+        file "/etc/bind/db.l2-4.ephec-ti.be";
+    };
+};
