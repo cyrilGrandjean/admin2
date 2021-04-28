@@ -7,11 +7,11 @@ define HELP
 @echo ----------
 @echo Commandes:
 @echo ----------
-@echo     build    - Build le docker-compose.
-@echo     start    - Démarre les containers. Alias: up
-@echo     stop     - Arrête les containers. Alias: down
-@echo     restart  - Redémarre les containers.
-@echo     help     - Affiche l'aide.
+@echo     build    		- Build le docker-compose.
+@echo     start, up     	- Demarre les containers.
+@echo     stop, down    	- Arrete les containers.
+@echo     restart  		- Redemarre les containers.
+@echo     help     		- Affiche l'aide.
 endef
 export HELP
 
