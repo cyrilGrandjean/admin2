@@ -1,5 +1,7 @@
 FROM php:apache
 
-COPY ./public-html/ /var/www/html/
-#COPY ./public-html/ /usr/local/apache2/htdocs/
-#COPY ./httpd.conf /usr/local/apache2/conf
+RUN docker-php-ext-install pdo pdo_mysql
+COPY ./sites_woody.conf/ /etc/apache2/sites-available
+COPY ./b2b/ /var/www/html/b2b
+COPY ./site_statique/ /var/www/html/site_statique
+

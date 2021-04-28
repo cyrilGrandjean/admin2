@@ -1,0 +1,15 @@
+version: 
+
+services:
+    db:
+        image: mysql:
+        environment:
+            - MYSQL_DB=${DB_NAME}
+            - MYSQL_USER=${DB_USER}
+            - MYSQL_PASSWORD=${DB_PASS}
+        volumes:
+            - mysql_data: #emplacement ou se situe les données
+    web:
+        
+        
+
