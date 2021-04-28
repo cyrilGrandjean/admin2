@@ -1,6 +1,6 @@
 include .env
 
-DC = docker-compose -p $(PROJECT_NAME) -f $(COMPOSE_FILE)
+DC = docker-compose -p $(COMPOSE_NAME) -f $(COMPOSE_FILE)
 
 define HELP
 Utilitaire docker-compose
