@@ -3,20 +3,20 @@ include .env
 DC = docker-compose -p $(COMPOSE_NAME) -f $(COMPOSE_FILE)
 
 define HELP
-Utilitaire docker-compose
-
-Commandes:
-----------
-    build    - Build le docker-compose.
-    start    - Démarre les containers. Alias: up
-    stop     - Arrête les containers. Alias: down
-    restart  - Redémarre les containers.
-    help     - Affiche l'aide.
+@echo Utilitaire docker-compose
+@echo ----------
+@echo Commandes:
+@echo ----------
+@echo     build    - Build le docker-compose.
+@echo     start    - Démarre les containers. Alias: up
+@echo     stop     - Arrête les containers. Alias: down
+@echo     restart  - Redémarre les containers.
+@echo     help     - Affiche l'aide.
 endef
 export HELP
 
 help:
-	@echo $(HELP)
+	$(HELP)
 
 build:
 	$(DC) build
