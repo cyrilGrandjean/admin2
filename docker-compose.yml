@@ -1,15 +1,49 @@
-version: 
+version: '3.3'
 
 services:
     db:
-        image: mysql:
+        build: ./database
+        container_name: data1
         environment:
-            - MYSQL_DB=${DB_NAME}
-            - MYSQL_USER=${DB_USER}
-            - MYSQL_PASSWORD=${DB_PASS}
-        volumes:
-            - mysql_data: #emplacement ou se situe les données
+            - MYSQL_DATABASE=${MYSQL_DATABASE}
+            - MYSQL_USER=${MYSQL_USER}
+            - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+            - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+        ports:
+            - 3306:3306
+        networks: 
+            local:
+                ipv4_address: 192.168.10.1
+
     web:
+        build: ./web
+        container_name: web1
+        ports:
+            - 80:80
+        networks: 
+            local:
+                ipv4_address: 192.168.30.3 
+
+    
+    dns:
+        build: ./DNS
+        container_name: dns
+        ports:
+            - '53:53/udp'
+            - '53:53/tcp'
+        networks: 
+            local:
+                ipv4_address: 192.168.30.1
+    
+networks:
+    local:
+        ipam: 
+            driver: default
+            config:
+                - subnet: 192.168.0.0/16
+
+        
+        
         
         
 
