@@ -10,7 +10,7 @@ $TTL 86400                   ; default time to live
 
         NS      ns1.l2-4.ephec-ti.be.
         MX      10 mail.l2-4.ephec-ti.be.
-		A       192.168.0.3
+		A       192.168.30.2
 
 
 ns1     IN     A        127.0.0.1
