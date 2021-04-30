@@ -29,3 +29,11 @@ stop down:
 
 restart:
 	$(DC) restart
+
+setup:
+	sudo iptables -I DOCKER-USER -s 192.168.30.0/24 -d 192.168.10.0/24 -j ACCEPT
+	sudo iptables -I DOCKER-USER -s 192.168.10.0/24 -d 192.168.30.0/24 -j ACCEPT
+	
+	sudo iptables -I DOCKER-USER -s 192.168.0.0/24 -d 192.168.30.0/24 -j ACCEPT
+	sudo iptables -I DOCKER-USER -s 192.168.30.0/24 -d 192.168.0.0/24 -j ACCEPT
+
