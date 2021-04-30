@@ -11,6 +11,7 @@ define HELP
 @echo     start, up     	- Demarre les containers.
 @echo     stop, down    	- Arrete les containers.
 @echo     restart  		- Redemarre les containers.
+@echo	  setup			- Ajout de regle dans le firewall.
 @echo     help     		- Affiche l'aide.
 endef
 export HELP
@@ -31,9 +32,9 @@ restart:
 	$(DC) restart
 
 setup:
-	sudo iptables -I DOCKER-USER -s 192.168.30.0/24 -d 192.168.10.0/24 -j ACCEPT
-	sudo iptables -I DOCKER-USER -s 192.168.10.0/24 -d 192.168.30.0/24 -j ACCEPT
+	sudo iptables -I DOCKER-USER -s $(SUBNET_DMZ) -d $(SUBNET_TRUSTED) -j ACCEPT
+	sudo iptables -I DOCKER-USER -s $(SUBNET_TRUSTED) -d $(SUBNET_DMZ) -j ACCEPT
 	
-	sudo iptables -I DOCKER-USER -s 192.168.0.0/24 -d 192.168.30.0/24 -j ACCEPT
-	sudo iptables -I DOCKER-USER -s 192.168.30.0/24 -d 192.168.0.0/24 -j ACCEPT
+	sudo iptables -I DOCKER-USER -s $(SUBNET_ENTREPRISE) -d $(SUBNET_DMZ) -j ACCEPT
+	sudo iptables -I DOCKER-USER -s $(SUBNET_DMZ) -d $(SUBNET_ENTREPRISE) -j ACCEPT
 
