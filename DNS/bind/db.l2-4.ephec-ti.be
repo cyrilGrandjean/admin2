@@ -10,11 +10,12 @@ $TTL 86400                   ; default time to live
 
         NS      ns1.l2-4.ephec-ti.be.
         MX      10 mail.l2-4.ephec-ti.be.
-		A       192.168.0.3
+		A       192.168.30.2
 
 
 ns1     IN     A        127.0.0.1
-www     IN     A        192.168.30.4
-b2b    IN     CNAME     www
-;mail   IN     A
-;mail   IN     A
+www     IN     A        192.168.30.3
+www     IN     A        135.125.101.209
+b2b     IN     CNAME     www
+;mail   IN     A        192.168.30.4
+;mail   IN     A        (id public)
