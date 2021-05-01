@@ -15,6 +15,7 @@ $TTL 86400                   ; default time to live
 
 ns1     IN     A        127.0.0.1
 www     IN     A        192.168.30.3
-b2b    IN     CNAME     www
-;mail   IN     A
-;mail   IN     A
+www     IN     A        135.125.101.209
+b2b     IN     CNAME     www
+;mail   IN     A        192.168.30.4
+;mail   IN     A        (id public)
