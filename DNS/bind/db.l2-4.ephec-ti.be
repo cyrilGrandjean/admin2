@@ -1,4 +1,4 @@
-$ORIGIN l2-4.ephec-ti.be     ;designates the start of this zone file in the namespace
+$ORIGIN l2-4.ephec-ti.be.     ;designates the start of this zone file in the namespace
 $TTL 86400                   ; default time to live
 
 @ IN SOA l2-4.ephec-ti.be. admin.l2-4.ephec-ti.be. (
