@@ -56,7 +56,7 @@ services:
             empreprise:
                 ipv4_address: 192.168.0.35
 
-    secrétaire:
+    secretaire:
         build: ./employes/default
         container_name: secretaire
         networks:
