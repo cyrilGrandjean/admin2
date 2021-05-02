@@ -42,51 +42,51 @@ services:
             empreprise:
                 ipv4_address: 192.168.0.2
 
-    directeur:
+    commerciaux1:
         build: ./employes/default
         container_name: commerciaux1
         network:
             empreprise:
                 ipv4_address: 192.168.0.34
 
-    directeur:
+    commerciaux2:
         build: ./employes/default
         container_name: commerciaux2
         network:
             empreprise:
                 ipv4_address: 192.168.0.35
 
-    directeur:
+    secrétaire:
         build: ./employes/default
         container_name: secrétaire
         network:
             empreprise:
                 ipv4_address: 192.168.0.66
 
-    directeur:
+    hangar:
         build: ./employes/default
         container_name: hangar
         network:
             empreprise:
                 ipv4_address: 192.168.0.99
 
-    directeur:
+    atelier:
         build: ./employes/default
         container_name: atelier
         network:
             empreprise:
                 ipv4_address: 192.168.0.98
 
-    directeur:
+    comptable1:
         build: ./employes/default
         container_name: comptable1
         network:
             empreprise:
                 ipv4_address: 192.168.0.130
 
-    directeur:
+    comptable2:
         build: ./employes/default
-        container_name: comptable1
+        container_name: comptable2
         network:
             empreprise:
                 ipv4_address: 192.168.0.131
