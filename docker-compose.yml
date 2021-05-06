@@ -34,6 +34,16 @@ services:
         networks: 
             DMZ:
                 ipv4_address: 192.168.30.2
+
+    voip:
+        build: ./VOIP
+        container_name: voip
+        ports:
+            - '5060:5060/udp'
+            - '5060:5060/tcp'
+        networks:
+            DMZ:
+                ipv4_address: 192.168.30.4
     
 networks:
     entreprise:
@@ -52,7 +62,8 @@ networks:
             config:
                 - subnet: 192.168.30.0/24
 
-        
+volumes:
+    asterisk:
         
         
         
