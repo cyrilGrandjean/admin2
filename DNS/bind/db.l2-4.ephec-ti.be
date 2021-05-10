@@ -9,15 +9,25 @@ $TTL 86400                   ; default time to live
         86400       ; Min TTL
         )
 
-@       IN      NS      ns.l2-4.ephec-ti.be.
-@       IN      MX      10 mail.l2-4.ephec-ti.be.
-@	    IN      A       192.168.30.2
-@	    IN      A       135.125.101.209
+@                   IN                  NS                  ns.l2-4.ephec-ti.be.
+@                   IN                  MX                  10 mail.l2-4.ephec-ti.be.
+@                   IN                  A                   192.168.30.2
+@                   IN                  A                   135.125.101.209
 
 
-ns      IN     A        135.125.101.209
-www     IN     A        192.168.30.3
-www     IN     A        135.125.101.209
-b2b     IN     CNAME    www
-mail   IN     A         192.168.30.5
-mail   IN     A         135.125.101.209
+ns                  IN                  A                   135.125.101.209
+
+;WEB
+www                 IN                  A                   192.168.30.3
+www                 IN                  A                   135.125.101.209
+b2b                 IN                  CNAME               www
+
+;mail
+mail                IN                  A                   192.168.30.5
+mail                IN                  A                   135.125.101.209
+
+;voip
+sip                 IN                  A                   192.168.30.4
+sip                 IN                  A                   135.125.101.209
+_sip._udp   SRV     0   0   5060    sip
+_sip._tcp   SRV     0   0   5060    sip
