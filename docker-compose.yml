@@ -47,6 +47,7 @@ services:
     directeur:
         build: ./employes/default
         container_name: directeur
+        stdin_open: true
         networks:
             entreprise:
                 ipv4_address: 192.168.0.2
@@ -54,6 +55,7 @@ services:
     commerciaux1:
         build: ./employes/default
         container_name: commerciaux1
+        stdin_open: true
         networks:
             entreprise:
                 ipv4_address: 192.168.0.34
@@ -61,6 +63,7 @@ services:
     commerciaux2:
         build: ./employes/default
         container_name: commerciaux2
+        stdin_open: true
         networks:
             entreprise:
                 ipv4_address: 192.168.0.35
@@ -68,6 +71,7 @@ services:
     secretaire:
         build: ./employes/default
         container_name: secretaire
+        stdin_open: true
         networks:
             entreprise:
                 ipv4_address: 192.168.0.66
@@ -75,6 +79,7 @@ services:
     hangar:
         build: ./employes/default
         container_name: hangar
+        stdin_open: true
         networks:
             entreprise:
                 ipv4_address: 192.168.0.99
@@ -82,6 +87,7 @@ services:
     atelier:
         build: ./employes/default
         container_name: atelier
+        stdin_open: true
         networks:
             entreprise:
                 ipv4_address: 192.168.0.98
@@ -89,6 +95,7 @@ services:
     comptable1:
         build: ./employes/default
         container_name: comptable1
+        stdin_open: true
         networks:
             entreprise:
                 ipv4_address: 192.168.0.130
@@ -96,6 +103,7 @@ services:
     comptable2:
         build: ./employes/default
         container_name: comptable2
+        stdin_open: true
         networks:
             entreprise:
                 ipv4_address: 192.168.0.131
