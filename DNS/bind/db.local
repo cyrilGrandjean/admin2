@@ -1,5 +1,5 @@
 
-$ORIGIN local.l2-4.ephec-ti.be.   ; default zone domain
+$ORIGIN local.   ; default zone domain
 $TTL 86400        ; default time to live
 
 @ IN SOA local. admin.local. (
@@ -10,11 +10,18 @@ $TTL 86400        ; default time to live
         86400       ; Min TTL
         )
 
-        NS      ns.local.
-		A       192.168.0.3
+@	 IN      NS      ns.local.
+@        IN      A       192.168.30.2
 
+ns       IN      A        192.168.30.2
 
-ns    IN     A        192.168.30.2
-www   IN     A        192.168.30.3
-;voip  IN     A        192.168.30.4
-mail  IN     A        192.168.30.5
+;web
+www      IN      A        192.168.30.3
+
+;voip
+sio	 IN      A        192.168.30.4
+_sip._udp   SRV     0   0   5060    sip
+_sip._tcp   SRV     0   0   5060    sip
+
+;mail
+mail	 IN      A        192.168.30.5
