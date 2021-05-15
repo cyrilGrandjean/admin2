@@ -20,7 +20,7 @@ FOREIGN KEY (domain_id) REFERENCES virtual_domains(id) ON DELETE CASCADE
 INSERT INTO woodymail.virtual_domains
 (id ,name)
 VALUES
-(1, l2-4.ephec-ti.be);
+(1, 'l2-4.ephec-ti.be');
 
 -- Création des adresses mail user
 INSERT INTO woodymail.virtual_users
