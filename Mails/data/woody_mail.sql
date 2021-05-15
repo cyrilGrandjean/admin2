@@ -1,11 +1,3 @@
--- Accorder les privilèges au root sur la db woodymail
-GRANT ALL PRIVILEGES ON woodymail.* TO 'usermail'@'127.0.0.1' IDENTIFIED BY 'root';
-
-FLUSH PRIVILEGES;
-
--- Utiliser la db woodymail
-use woodymail;
-
 -- Création des tables domaines et users
 CREATE TABLE `virtual_domains` (
 `id` INT NOT NULL AUTO_INCREMENT,
