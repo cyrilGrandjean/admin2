@@ -1,5 +1,3 @@
-create database woodymail;
-
 -- Accorder les privilèges au root sur la db woodymail
 GRANT ALL PRIVILEGES ON woodymail.* to 'mailUser'@'localhost' identified by 'root';
 
