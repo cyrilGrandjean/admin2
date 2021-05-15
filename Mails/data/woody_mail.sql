@@ -26,8 +26,8 @@ VALUES
 INSERT INTO woodymail.virtual_users
 (id, domain_id, password , email, maildir)
 VALUES
-(1, 1, ENCRYPT('root', CONCAT('$6$', SUBSTRING(SHA(RAND()), -16))), 'cyril@l2-4.ephec-ti.be', 'l2-4.ephec-ti.be/cyril/');
-(2, 1, ENCRYPT('root', CONCAT('$6$', SUBSTRING(SHA(RAND()), -16))), 'mikael@l2-4.ephec-ti.be', 'l2-4.ephec-ti.be/mikael/');
-(3, 1, ENCRYPT('root', CONCAT('$6$', SUBSTRING(SHA(RAND()), -16))), 'quentin@l2-4.ephec-ti.be', 'l2-4.ephec-ti.be/quentin/');
-(4, 1, ENCRYPT('root', CONCAT('$6$', SUBSTRING(SHA(RAND()), -16))), 'contact@l2-4.ephec-ti.be', 'l2-4.ephec-ti.be/contact/');
+(1, 1, 'root', 'cyril@l2-4.ephec-ti.be', 'l2-4.ephec-ti.be/cyril/');
+(2, 1, 'root', 'mikael@l2-4.ephec-ti.be', 'l2-4.ephec-ti.be/mikael/');
+(3, 1, 'root', 'quentin@l2-4.ephec-ti.be', 'l2-4.ephec-ti.be/quentin/');
+(4, 1, 'root', 'contact@l2-4.ephec-ti.be', 'l2-4.ephec-ti.be/contact/');
 
