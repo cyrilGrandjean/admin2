@@ -102,21 +102,29 @@ services:
     
 networks:
     entreprise:
+        driver: bridge
+        driver_opts:
+            com.docker.network.bridge.enable_ip_masquerade: 'false'
         ipam:
             driver: default
             config:
                 - subnet: 192.168.0.0/24
     trusted:
+        driver: bridge
+        driver_opts:
+            com.docker.network.bridge.enable_ip_masquerade: 'false'
         ipam:
             driver: default
             config:
                 - subnet: 192.168.10.0/24
     DMZ:
+        driver: bridge
+        driver_opts:
+            com.docker.network.bridge.enable_ip_masquerade: 'false'
         ipam:
             driver: default
             config:
                 - subnet: 192.168.30.0/24
-
         
         
         
