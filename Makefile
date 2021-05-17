@@ -31,6 +31,15 @@ stop down:
 restart:
 	$(DC) restart
 
+logs:
+	$(DC) logs
+
+logs-%:
+	$(DC) logs $*
+
+exec-%:
+	docker exec -ti $* bash
+
 setup:
 	sudo iptables -I DOCKER-USER -s $(SUBNET_DMZ) -d $(SUBNET_TRUSTED) -j ACCEPT
 	sudo iptables -I DOCKER-USER -s $(SUBNET_TRUSTED) -d $(SUBNET_DMZ) -j ACCEPT
