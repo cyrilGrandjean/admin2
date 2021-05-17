@@ -13,7 +13,7 @@ email VARCHAR(120) NOT NULL,
 maildir VARCHAR(120) NOT NULL,
 PRIMARY KEY (id),
 UNIQUE KEY email (email),
-FOREIGN KEY (domain_id) REFERENCES virtual_domains(id) ON DELETE CASCADE
+FOREIGN KEY (domain_id) REFERENCES virtual_domains(id)
 );
 
 -- Insertion du domaine dans la table domaine
@@ -26,8 +26,8 @@ VALUES
 INSERT INTO virtual_users
 (id, domain_id, password , email, maildir)
 VALUES
-(1, 1, 'root', 'cyril@l2-4.ephec-ti.be', 'l2-4.ephec-ti.be/cyril/');
-(2, 1, 'root', 'mikael@l2-4.ephec-ti.be', 'l2-4.ephec-ti.be/mikael/');
-(3, 1, 'root', 'quentin@l2-4.ephec-ti.be', 'l2-4.ephec-ti.be/quentin/');
+(1, 1, 'root', 'cyril@l2-4.ephec-ti.be', 'l2-4.ephec-ti.be/cyril/'),
+(2, 1, 'root', 'mikael@l2-4.ephec-ti.be', 'l2-4.ephec-ti.be/mikael/'),
+(3, 1, 'root', 'quentin@l2-4.ephec-ti.be', 'l2-4.ephec-ti.be/quentin/'),
 (4, 1, 'root', 'contact@l2-4.ephec-ti.be', 'l2-4.ephec-ti.be/contact/');
 
