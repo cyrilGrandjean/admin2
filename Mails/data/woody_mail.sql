@@ -17,13 +17,13 @@ FOREIGN KEY (domain_id) REFERENCES virtual_domains(id) ON DELETE CASCADE
 );
 
 -- Insertion du domaine dans la table domaine
-INSERT INTO woodymail.virtual_domains
+INSERT INTO virtual_domains
 (id ,name)
 VALUES
 (1, 'l2-4.ephec-ti.be');
 
 -- Création des adresses mail user
-INSERT INTO woodymail.virtual_users
+INSERT INTO virtual_users
 (id, domain_id, password , email, maildir)
 VALUES
 (1, 1, 'root', 'cyril@l2-4.ephec-ti.be', 'l2-4.ephec-ti.be/cyril/');
