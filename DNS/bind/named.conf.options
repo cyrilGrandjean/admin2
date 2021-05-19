@@ -1,6 +1,6 @@
 options {
     directory "/var/cache/bind";
-    listen-on port 53{ any; };
+    listen-on port 53{ any; };      // écoute tout les interface sur le port par default.
 
     allow-recursion {
         none;
