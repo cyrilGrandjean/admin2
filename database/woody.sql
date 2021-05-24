@@ -24,6 +24,20 @@ CREATE TABLE clients (
   PRIMARY KEY (id)
 );
 
+CREATE TABLE commandes (
+  id int AUTO_INCREMENT,
+  nom varchar(255) NOT NULL,
+  client varchar(255) NOT NULL,
+  prix int NOT NULL,
+  PRIMARY KEY (id)
+);
+
+CREATE TABLE stocks (
+  id int AUTO_INCREMENT,
+  nom varchar(255) NOT NULL,
+  unite int NOT NULL,
+  PRIMARY KEY (id)
+);
 --
 -- Déchargement des données de la table `clients`
 --
@@ -32,4 +46,10 @@ INSERT INTO clients (id, nom, prenom, sexe) VALUES
 (1, 'Quentin', 'Servais', 'man'),
 (2, 'Ludo', 'Gorgemans', 'man');
 
+INSERT INTO commandes (id, nom, client, prix) VALUES
+(1, 'ourson', 'Quentin', 2),
+(2, 'licorne', 'Cyril', 5000);
 
+INSERT INTO stocks (id, nom, unite) VALUES
+(1, 'ourson', 100),
+(2, 'licorne', 1000000);
