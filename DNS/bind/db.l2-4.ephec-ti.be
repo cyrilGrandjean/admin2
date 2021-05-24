@@ -25,5 +25,5 @@ mail                IN                  A                   135.125.101.209
 
 ;voip
 sip                 IN                  A                   135.125.101.209
-_sip._udp   SRV     0   0   5060    sip
-_sip._tcp   SRV     0   0   5060    sip
+_sip._udp   SRV 0 0 5060 sip
+_sip._tcp   SRV 0 0 5060 sip
