@@ -11,6 +11,8 @@ COPY ./b2b/ /var/www/html/b2b
 # Copie du site statique (html) dans le fichier www d'apache création d'un dossier site_statique
 COPY ./site_statique/ /var/www/html/site_statique
 
+COPY ./intranet/ /var/www/html/intranet
+
 # Désactiver la configuration des virtualhosts par défaut
 RUN a2dissite 000-default.conf
 # Activer la configuration des virtualhosts Woodytoys
