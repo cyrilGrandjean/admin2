@@ -1,3 +1,6 @@
 FROM dougbtv/asterisk14
 
-COPY ./conf /etc/asterisk/
+RUN yum -y install net-tools
+
+COPY conf /etc/asterisk/
+
