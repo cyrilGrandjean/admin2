@@ -9,10 +9,9 @@ services:
             - MYSQL_USER=${MYSQL_USER}
             - MYSQL_PASSWORD=${MYSQL_PASSWORD}
             - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
-        ports:
-            - 3306:3306
-        networks: 
-            trusted:
+        dns: 192.168.30.2
+        networks:
+            entreprise:
                 ipv4_address: 192.168.10.2
 
     web:
@@ -20,25 +19,28 @@ services:
         container_name: web1
         ports:
             - 80:80
-        networks: 
-            DMZ:
-                ipv4_address: 192.168.30.3 
+        dns: 192.168.30.2
+        networks:
+            entreprise:
+                ipv4_address: 192.168.30.3
 
-    
+
     dns:
         build: ./DNS
         container_name: dns
         ports:
             - '53:53/udp'
             - '53:53/tcp'
-        networks: 
-            DMZ:
+        dns: 192.168.30.2
+        networks:
+            entreprise:
                 ipv4_address: 192.168.30.2
 
     directeur:
         build: ./employes/default
         container_name: directeur
         stdin_open: true
+        dns: 192.168.30.2
         networks:
             entreprise:
                 ipv4_address: 192.168.0.2
@@ -47,6 +49,7 @@ services:
         build: ./employes/default
         container_name: commerciaux1
         stdin_open: true
+        dns: 192.168.30.2
         networks:
             entreprise:
                 ipv4_address: 192.168.0.34
@@ -55,6 +58,7 @@ services:
         build: ./employes/default
         container_name: commerciaux2
         stdin_open: true
+        dns: 192.168.30.2
         networks:
             entreprise:
                 ipv4_address: 192.168.0.35
@@ -63,6 +67,7 @@ services:
         build: ./employes/default
         container_name: secretaire
         stdin_open: true
+        dns: 192.168.30.2
         networks:
             entreprise:
                 ipv4_address: 192.168.0.66
@@ -71,6 +76,7 @@ services:
         build: ./employes/default
         container_name: hangar
         stdin_open: true
+        dns: 192.168.30.2
         networks:
             entreprise:
                 ipv4_address: 192.168.0.99
@@ -79,6 +85,7 @@ services:
         build: ./employes/default
         container_name: atelier
         stdin_open: true
+        dns: 192.168.30.2
         networks:
             entreprise:
                 ipv4_address: 192.168.0.98
@@ -87,6 +94,7 @@ services:
         build: ./employes/default
         container_name: comptable1
         stdin_open: true
+        dns: 192.168.30.2
         networks:
             entreprise:
                 ipv4_address: 192.168.0.130
@@ -95,38 +103,20 @@ services:
         build: ./employes/default
         container_name: comptable2
         stdin_open: true
+        dns: 192.168.30.2
         networks:
             entreprise:
                 ipv4_address: 192.168.0.131
 
-    
+
 networks:
     entreprise:
-        driver: bridge
-        driver_opts:
-            com.docker.network.bridge.enable_ip_masquerade: 'false'
         ipam:
             driver: default
             config:
-                - subnet: 192.168.0.0/24
-    trusted:
-        driver: bridge
-        driver_opts:
-            com.docker.network.bridge.enable_ip_masquerade: 'false'
-        ipam:
-            driver: default
-            config:
-                - subnet: 192.168.10.0/24
-    DMZ:
-        driver: bridge
-        driver_opts:
-            com.docker.network.bridge.enable_ip_masquerade: 'false'
-        ipam:
-            driver: default
-            config:
-                - subnet: 192.168.30.0/24
-        
-        
-        
-        
+                - subnet: 192.168.0.0/16
+
+
+
+
 
