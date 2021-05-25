@@ -6,3 +6,4 @@ RUN apt-get install -y asterisk
 
 COPY conf /etc/asterisk/
 
+CMD ["asterisk","-f"]
