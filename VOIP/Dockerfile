@@ -1,4 +1,4 @@
-FROM dougbtv/asterisk14
+FROM andrius/asterisk
 
 COPY conf /etc/asterisk/
 
