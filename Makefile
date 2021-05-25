@@ -37,8 +37,14 @@ logs:
 logs-%:
 	$(DC) logs $*
 
-exec-%:
+bash-exec-%:
 	docker exec -ti $* bash
+
+sh-exec-%:
+	docker exec -ti $* sh
+
+delimage:
+	docker image prune
 
 setup:
 	sudo iptables -I DOCKER-USER -s $(SUBNET_DMZ) -d $(SUBNET_TRUSTED) -j ACCEPT
