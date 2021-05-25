@@ -9,6 +9,7 @@ services:
             - MYSQL_USER=${MYSQL_USER}
             - MYSQL_PASSWORD=${MYSQL_PASSWORD}
             - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+        dns: 192.168.30.2
         networks:
             entreprise:
                 ipv4_address: 192.168.10.2
@@ -18,6 +19,7 @@ services:
         container_name: web1
         ports:
             - 80:80
+        dns: 192.168.30.2
         networks:
             entreprise:
                 ipv4_address: 192.168.30.3
@@ -29,6 +31,7 @@ services:
         ports:
             - '53:53/udp'
             - '53:53/tcp'
+        dns: 192.168.30.2
         networks:
             entreprise:
                 ipv4_address: 192.168.30.2
@@ -37,6 +40,7 @@ services:
         build: ./employes/default
         container_name: directeur
         stdin_open: true
+        dns: 192.168.30.2
         networks:
             entreprise:
                 ipv4_address: 192.168.0.2
@@ -45,6 +49,7 @@ services:
         build: ./employes/default
         container_name: commerciaux1
         stdin_open: true
+        dns: 192.168.30.2
         networks:
             entreprise:
                 ipv4_address: 192.168.0.34
@@ -53,6 +58,7 @@ services:
         build: ./employes/default
         container_name: commerciaux2
         stdin_open: true
+        dns: 192.168.30.2
         networks:
             entreprise:
                 ipv4_address: 192.168.0.35
@@ -61,6 +67,7 @@ services:
         build: ./employes/default
         container_name: secretaire
         stdin_open: true
+        dns: 192.168.30.2
         networks:
             entreprise:
                 ipv4_address: 192.168.0.66
@@ -69,6 +76,7 @@ services:
         build: ./employes/default
         container_name: hangar
         stdin_open: true
+        dns: 192.168.30.2
         networks:
             entreprise:
                 ipv4_address: 192.168.0.99
@@ -77,6 +85,7 @@ services:
         build: ./employes/default
         container_name: atelier
         stdin_open: true
+        dns: 192.168.30.2
         networks:
             entreprise:
                 ipv4_address: 192.168.0.98
@@ -85,6 +94,7 @@ services:
         build: ./employes/default
         container_name: comptable1
         stdin_open: true
+        dns: 192.168.30.2
         networks:
             entreprise:
                 ipv4_address: 192.168.0.130
@@ -93,6 +103,7 @@ services:
         build: ./employes/default
         container_name: comptable2
         stdin_open: true
+        dns: 192.168.30.2
         networks:
             entreprise:
                 ipv4_address: 192.168.0.131
