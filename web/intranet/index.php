@@ -2,7 +2,7 @@
 try { 
     $objetPdo = new PDO('mysql:host=192.168.10.2;dbname=woody;charset=utf8', 'root', 'root');
     echo "connect OK";
-    $pdoStat = $objetPdo->prepare('SELECT * FROM clients');
+    $pdoStat = $objetPdo->prepare('SELECT * FROM commandes');
     $request = $pdoStat->execute();
     $clients = $pdoStat->fetchAll();
 
@@ -27,14 +27,14 @@ try {
       }
     ?>
     </div>
-    <h2>Devenir client</h2>
+    <h2>le Produit</h2>
     <form action="#" method="post">
       <p>
-        <label for="nom">Votre Nom</label>
+        <label for="nom">Produit</label>
         <input type="text" id="nom" name="nom" placeholder="Mathioux">
       </p>
       <p>
-        <label for="client">Votre prénom</label>
+        <label for="client">nom client</label>
         <input type="text" id="client" name="client" placeholder="Licorne">
       </p>
       <p>
@@ -46,7 +46,7 @@ try {
         $requete_insertion = $objetPdo -> prepare('INSERT INTO commandes(nom, client) VALUES (:n, :p)');
         $requete_insertion -> execute(array(
           'n' => $_POST["nom"],
-          'p' => $_POST["prenom"]
+          'p' => $_POST["client"]
         ));
       }
     ?>
