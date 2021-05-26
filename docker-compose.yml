@@ -43,7 +43,7 @@ services:
             - '5060:5060/udp'
             - '5060:5060/tcp'
         networks:
-            DMZ:
+            entreprise:
                 ipv4_address: 192.168.30.4
     directeur:
         build: ./employes/default
