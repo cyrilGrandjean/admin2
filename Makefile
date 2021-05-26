@@ -52,9 +52,6 @@ stopcontainer:
 delcontainer:
 	docker rm -f $(docker ps -aq)
 
-delimage:
-	docker image prune
-
 setup:
 	sudo iptables -I DOCKER-USER -s $(SUBNET_DMZ) -d $(SUBNET_TRUSTED) -j ACCEPT
 	sudo iptables -I DOCKER-USER -s $(SUBNET_TRUSTED) -d $(SUBNET_DMZ) -j ACCEPT
