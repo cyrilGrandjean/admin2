@@ -1,0 +1,16 @@
+# Authentication for SQL users. Included from 10-auth.conf.
+#
+# <doc/wiki/AuthDatabase.SQL.txt>
+
+passdb {
+  driver = sql
+  
+  # chemin pour les fichiers de configuration SQl
+  args = /etc/dovecot/dovecot-sql.conf.ext
+}
+
+# Information sur l'utilisateur 
+userdb {
+  driver = static
+  args = uid=vhosts gid=vhosts home=/var/mail/vhosts/%d/%n
+}

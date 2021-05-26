@@ -1,0 +1,15 @@
+# This file is commonly accessed via passdb {} or userdb {} section in
+# conf.d/auth-sql.conf.ext
+
+# Database driver: mysql, pgsql, sqlite
+driver = mysql
+
+
+# Adresse de la database des mails ainsi que le user et le password
+connect = host=127.0.0.1 dbname=maildb user=mailUser password=root
+
+# Default password scheme.
+default_pass_scheme = SHA512-CRYPT
+
+# Requete SQL pour récupérer les informations des emails en DB
+password_query = SELECT email as user, password FROM virtual_users WHERE email='%u'
