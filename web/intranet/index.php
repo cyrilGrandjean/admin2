@@ -39,7 +39,7 @@ try {
       </p>
       <p>
         <label for="prix">prix Produit</label>
-        <input type="int" id="prix" name="print" placeholder="100">
+        <input type="int" id="prix" name="prix" placeholder="100">
       </p>
       <p>
         <input type="submit" value="Enregistrer">
