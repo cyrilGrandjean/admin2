@@ -1,0 +1,14 @@
+acl internal_ips {
+    localhost;
+    192.168.0.0/24;
+};
+
+view internal {
+    match-clients { internal_ips; };
+    allow-recursion { internal_ips; };
+    recursion yes;
+    zone "local" IN {
+        type master;
+        file "/etc/bind/db.local";
+    };
+};
