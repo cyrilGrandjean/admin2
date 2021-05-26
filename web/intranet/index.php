@@ -22,8 +22,8 @@ try {
     <h2>Commandes:</h2>
     <div id="Commandes">
     <?php
-    foreach ($Commandes as $Commande) {
-        echo "<li>" . $Commande['nom'] . " " . $Commande['client'] . "</li>";
+    foreach ($commandes as $commande) {
+        echo "<li>" . $commande['nom'] . " " . $commande['client'] . " " . $commande['prix'] . "</li>";
       }
     ?>
     </div>
