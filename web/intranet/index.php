@@ -4,7 +4,7 @@ try {
     echo "connect OK";
     $pdoStat = $objetPdo->prepare('SELECT * FROM commandes');
     $request = $pdoStat->execute();
-    $clients = $pdoStat->fetchAll();
+    $commandes = $pdoStat->fetchAll();
 
 } catch (PDOException $e) {
     echo $e;
@@ -20,7 +20,7 @@ try {
   <body>
     <h1>Intranet Woody Toys</h1>
     <h2>Commandes:</h2>
-    <div id="Commandes">
+    <div id="commandes">
     <?php
     foreach ($commandes as $commande) {
         echo "<li>" . $commande['nom'] . " " . $commande['client'] . " " . $commande['prix'] . "</li>";
@@ -38,7 +38,7 @@ try {
         <input type="text" id="client" name="client" placeholder="Licorne">
       </p>
       <p>
-        <label for="client">prix Produit</label>
+        <label for="prix">prix Produit</label>
         <input type="int" id="prix" name="print" placeholder="100">
       </p>
       <p>
@@ -47,7 +47,7 @@ try {
     </form>
     <?php
       if (isset($_POST['nom'], $_POST['client'], $_POST['prix'])){
-        $requete_insertion = $objetPdo -> prepare('INSERT INTO commandes(nom, client) VALUES (:n, :p, :r)');
+        $requete_insertion = $objetPdo -> prepare('INSERT INTO commandes(nom, client, prix) VALUES (:n, :p, :r)');
         $requete_insertion -> execute(array(
           'n' => $_POST["nom"],
           'p' => $_POST["client"],
