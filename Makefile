@@ -44,6 +44,15 @@ sh-exec-%:
 	docker exec -ti $* sh
 
 delimage:
+	docker rmi $(docker images -q)
+
+stopcontainer:
+	docker stop $(docker ps -aq)
+
+delcontainer:
+	docker rm -f $(docker ps -aq)
+
+delimage:
 	docker image prune
 
 setup:
