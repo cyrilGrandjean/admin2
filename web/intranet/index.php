@@ -38,15 +38,20 @@ try {
         <input type="text" id="client" name="client" placeholder="Licorne">
       </p>
       <p>
+        <label for="client">prix Produit</label>
+        <input type="int" id="prix" name="print" placeholder="100">
+      </p>
+      <p>
         <input type="submit" value="Enregistrer">
       </p>
     </form>
     <?php
-      if (isset($_POST['nom'], $_POST['client'])){
-        $requete_insertion = $objetPdo -> prepare('INSERT INTO commandes(nom, client) VALUES (:n, :p)');
+      if (isset($_POST['nom'], $_POST['client'], $_POST['prix'])){
+        $requete_insertion = $objetPdo -> prepare('INSERT INTO commandes(nom, client) VALUES (:n, :p, :r)');
         $requete_insertion -> execute(array(
           'n' => $_POST["nom"],
-          'p' => $_POST["client"]
+          'p' => $_POST["client"],
+          'r' => $_POST["prix"]
         ));
       }
     ?>
