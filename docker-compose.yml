@@ -45,6 +45,8 @@ services:
         networks:
             entreprise:
                 ipv4_address: 192.168.30.4
+        volumes:
+            - '/var/log/asterisk/messages:/var/log/asterisk/messages'
     directeur:
         build: ./employes/default
         container_name: directeur
@@ -124,4 +126,3 @@ networks:
             driver: default
             config:
                 - subnet: 192.168.0.0/16
-
