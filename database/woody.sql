@@ -15,7 +15,6 @@
 --
 -- Structure de la table `clients`
 --
-GRANT SELECT ON woodymail.* TO 'usermail'@'127.0.0.1' IDENTIFIED BY 'mailpassword';
 
 CREATE TABLE clients (
   id int AUTO_INCREMENT,
