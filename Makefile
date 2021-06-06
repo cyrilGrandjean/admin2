@@ -39,7 +39,7 @@ setup:
 	sudo iptables -I DOCKER-USER -s $(SUBNET_DMZ) -d $(SUBNET_ENTREPRISE) -j ACCEPT
 
 sign-dnssec:
-	docker exec -ti dns dnssec-signzone -t -g -A -3 $(head -c 1000 /dev/urandom | sha1sum | cut -b 1-16) -N INCREMENT -k /keys/Kl2-4.ephec-ti.be.ksk.key -o l2-4.ephec-ti.be -t db.l2-4.ephec-ti.be /keys/Kl2-4.ephec-ti.be.zsk.key
+	docker exec -ti dns bash -c 'cd /keys && dnssec-signzone -t -g -A -3 $$(head -c 1000 /dev/urandom | sha1sum | cut -b 1-16) -N INCREMENT -k Kl2-4.ephec-ti.be.ksk.key -o l2-4.ephec-ti.be -t /etc/bind/db.l2-4.ephec-ti.be Kl2-4.ephec-ti.be.zsk.key'
 gen-dnssec:
 	docker exec -ti dns dnssec-keygen -a NSEC3RSASHA1 -b 2048 -n ZONE l2-4.ephec-ti.be
 	docker exec -ti dns mv Kl2-4.ephec-ti.be.+007+*.key Kl2-4.ephec-ti.be.zsk.key
