@@ -18,3 +18,6 @@ ns      IN     A        135.125.101.209
 www     IN     A        135.125.101.209
 b2b     IN     CNAME    www
 mail   IN     A         135.125.101.209
+
+$INCLUDE Kl2-4.ephec-ti.be.zsk.key
+$INCLUDE Kl2-4.ephec-ti.be.ksk.key
