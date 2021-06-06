@@ -38,5 +38,12 @@ setup:
 	sudo iptables -I DOCKER-USER -s $(SUBNET_ENTREPRISE) -d $(SUBNET_DMZ) -j ACCEPT
 	sudo iptables -I DOCKER-USER -s $(SUBNET_DMZ) -d $(SUBNET_ENTREPRISE) -j ACCEPT
 
-setup-dnssec:
-	dnssec-signzone -t -g -A -3 $(head -c 1000 /dev/urandom | sha1sum | cut -b 1-16) -N INCREMENT -k /keys/Kl2-4.ephec-ti.be.ksk.key -o l2-4.ephec-ti.be -t db.l2-4.ephec-ti.be /keys/Kl2-4.ephec-ti.be.zsk.key
+sign-dnssec:
+	docker exec -ti dns dnssec-signzone -t -g -A -3 $(head -c 1000 /dev/urandom | sha1sum | cut -b 1-16) -N INCREMENT -k /keys/Kl2-4.ephec-ti.be.ksk.key -o l2-4.ephec-ti.be -t db.l2-4.ephec-ti.be /keys/Kl2-4.ephec-ti.be.zsk.key
+gen-dnssec:
+	docker exec -ti dns dnssec-keygen -a NSEC3RSASHA1 -b 2048 -n ZONE l2-4.ephec-ti.be
+	docker exec -ti dns mv Kl2-4.ephec-ti.be.+007+*.key Kl2-4.ephec-ti.be.zsk.key
+	docker exec -ti dns mv Kl2-4.ephec-ti.be.+007+*.private Kl2-4.ephec-ti.be.zsk.private
+	docker exec -ti dns dnssec-keygen -f KSK -a NSEC3RSASHA1 -b 4096 -n ZONE l2-4.ephec-ti.be
+	docker exec -ti dns mv Kl2-4.ephec-ti.be.+007+*.key Kl2-4.ephec-ti.be.ksk.key
+	docker exec -ti dns mv Kl2-4.ephec-ti.be.+007+*.private Kl2-4.ephec-ti.be.ksk.private
