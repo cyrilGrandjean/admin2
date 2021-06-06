@@ -23,7 +23,7 @@ services:
         networks:
             entreprise:
                 ipv4_address: 192.168.30.3
-        volume:
+        volumes:
             - /home/cyril/certificate:/etc/apache2/certificate
 
 
