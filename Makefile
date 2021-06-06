@@ -38,3 +38,5 @@ setup:
 	sudo iptables -I DOCKER-USER -s $(SUBNET_ENTREPRISE) -d $(SUBNET_DMZ) -j ACCEPT
 	sudo iptables -I DOCKER-USER -s $(SUBNET_DMZ) -d $(SUBNET_ENTREPRISE) -j ACCEPT
 
+setup-ssl-apache:
+	sudo docker run -v /home/cyril/certificate:/certs -e SSL_SUBJECT=www.intranet.local -e SSL_KEY=apache.key -e SSL_CERT=apache.crt -e SSL_CSR=apache.csr paulczar/omgwtfssl
