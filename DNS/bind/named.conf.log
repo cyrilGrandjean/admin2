@@ -1,32 +1,32 @@
 logging {
     channel "requetes" {
-    file "/log/bind/queries.log" size 10m;
-    print-time yes;
-    print-category yes;
+    file "/log/bind/queries.log" size 10m;  //Lier vers le fichier de log
+    print-time yes;                         // Affiche le temps dans le fichier de log
+    print-category yes;                     // affiche la categorie dans le fichier de log
     };
 category queries { "requetes"; };
 
     channel "securite" {
-    file "/log/bind/securite.log" size 5m;
-    print-category yes;
+    file "/log/bind/securite.log" size 5m;  //Lier vers le fichier de log
+    print-category yes;                     // affiche la categorie dans le fichier de log
     print-severity yes;
-    print-time yes;
+    print-time yes;                         // Affiche le temps dans le fichier de log
     };
 category security { "securite"; };
 
     channel "global" {
-    file "/log/bind/global.log" size 5m;
-    print-category yes;
+    file "/log/bind/global.log" size 5m;    // Lier vers le fichier de log
+    print-category yes;                     // affiche la categorie dans le fichier de log
     print-severity yes;
-    print-time yes;
+    print-time yes;                         // Affiche le temps dans le fichier de log
     };
 category general { "global"; };
 
     channel "configuration" {
-    file "/log/bind/config.log" size 5m;
-    print-category yes;
+    file "/log/bind/config.log" size 5m;    // Lier vers le fichier de log
+    print-category yes;                     // affiche la categorie dans le fichier de log
     print-severity yes;
-    print-time yes;
+    print-time yes;                         // Affiche le temps dans le fichier de log
     };
 category config { "configuration"; };
 

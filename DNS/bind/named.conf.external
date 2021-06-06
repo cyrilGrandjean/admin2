@@ -1,8 +1,8 @@
 
 view external {
-    match-clients { any; };
+    match-clients { any; };                     // accept des requete de n'importe quel ip
     allow-query {any;};
-    zone "l2-4.ephec-ti.be" IN {
+    zone "l2-4.ephec-ti.be" IN {                // lien a la zone externe
         type master;
         file "/etc/bind/db.l2-4.ephec-ti.be";
     };
