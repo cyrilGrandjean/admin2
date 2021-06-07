@@ -44,13 +44,13 @@ sh-exec-%:
 	docker exec -ti $* sh
 
 delimage:
-	docker rmi $(docker images -q)
+	docker rmi $$(docker images -q)
 
 stopcontainer:
-	docker stop $(docker ps -aq)
+	docker stop $$(docker ps -aq)
 
 delcontainer:
-	docker rm -f $(docker ps -aq)
+	docker rm -f $$(docker ps -aq)
 
 
 sign-dnssec:
