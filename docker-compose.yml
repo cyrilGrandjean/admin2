@@ -23,6 +23,8 @@ services:
         networks:
             entreprise:
                 ipv4_address: 192.168.30.3
+        volumes:
+            - /etc/letsencrypt/live/l2-4.ephec-ti.be/fullchain.pem:/letsencrypt/fullchain.pem
 
 
     dns:
