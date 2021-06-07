@@ -50,9 +50,3 @@ gen-dnssec:
 	docker exec -ti dns mv Kl2-4.ephec-ti.be.+007+*.key Kl2-4.ephec-ti.be.ksk.key
 	docker exec -ti dns mv Kl2-4.ephec-ti.be.+007+*.private Kl2-4.ephec-ti.be.ksk.private
 
-setup-https:
-	docker stop web1
-	docker run -it --rm --name certbot -v "/etc/letsencrypt:/etc/letsencrypt" -v "/var/lib/letsencrypt:/var/lib/letsencrypt" -p 80:80 certbot/certbot certonly
-	$(MAKE) restart
-renew-https:
-	docker run -it --rm --name certbot -v "/etc/letsencrypt:/etc/letsencrypt" -v "/var/lib/letsencrypt:/var/lib/letsencrypt" -p 80:80 certbot/certbot renew
