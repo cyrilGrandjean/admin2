@@ -17,14 +17,21 @@ services:
     web:
         build: ./web
         container_name: web1
-        ports:
-            - 80:80
         dns: 192.168.30.2
         networks:
             entreprise:
                 ipv4_address: 192.168.30.3
-        volumes:
-            - /etc/letsencrypt/live/l2-4.ephec-ti.be/fullchain.pem:/letsencrypt/fullchain.pem
+
+    caddy:
+        build: ./web/caddy
+        container_name: caddy
+        ports:
+            - 80:80
+            - 443:443
+        dns: 192.168.30.2
+        networks:
+            entreprise:
+                ipv4_address: 192.168.30.6
 
 
     dns:

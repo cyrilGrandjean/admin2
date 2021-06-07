@@ -1,0 +1,3 @@
+www.l2-4.ephec-ti.be, b2b.l2-4.ephec-ti.be {
+    reverse_procy 192.168.30.6:80
+}
