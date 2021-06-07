@@ -41,6 +41,7 @@ setup:
 sign-dnssec:
 	docker exec -ti dns bash -c 'cd /keys && dnssec-signzone -t -g -A -3 $$(head -c 1000 /dev/urandom | sha1sum | cut -b 1-16) -N INCREMENT -k Kl2-4.ephec-ti.be.ksk.key -o l2-4.ephec-ti.be -t /etc/bind/db.l2-4.ephec-ti.be Kl2-4.ephec-ti.be.zsk.key'
 	$(MAKE) restart
+
 gen-dnssec:
 	docker exec -ti dns dnssec-keygen -a NSEC3RSASHA1 -b 2048 -n ZONE l2-4.ephec-ti.be
 	docker exec -ti dns mv Kl2-4.ephec-ti.be.+007+*.key Kl2-4.ephec-ti.be.zsk.key
@@ -48,6 +49,7 @@ gen-dnssec:
 	docker exec -ti dns dnssec-keygen -f KSK -a NSEC3RSASHA1 -b 4096 -n ZONE l2-4.ephec-ti.be
 	docker exec -ti dns mv Kl2-4.ephec-ti.be.+007+*.key Kl2-4.ephec-ti.be.ksk.key
 	docker exec -ti dns mv Kl2-4.ephec-ti.be.+007+*.private Kl2-4.ephec-ti.be.ksk.private
+	
 setup-ssl-apache:
 	sudo docker run -v /home/cyril/certificate:/certs \
 	-e SSL_SUBJECT=www.local \
