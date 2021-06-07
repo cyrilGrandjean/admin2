@@ -17,17 +17,31 @@ services:
     web:
         build: ./web
         container_name: web1
-        ports:
-            - 80:80
         dns: 192.168.30.2
         networks:
             entreprise:
                 ipv4_address: 192.168.30.3
+        volumes:
+            - ../certificate/apache.crt:/etc/apache2/certificate/apache.crt
+            - ../certificate/apache.key:/etc/apache2/certificate/apache.key
+
+    caddy:
+        build: ./web/caddy
+        container_name: caddy
+        ports:
+            - 80:80
+            - 443:443
+        dns: 192.168.30.2
+        networks:
+            entreprise:
+                ipv4_address: 192.168.30.6
 
 
     dns:
         build: ./DNS
         container_name: dns
+        volumes: 
+            - ../keys:/keys
         ports:
             - '53:53/udp'
             - '53:53/tcp'
@@ -55,6 +69,8 @@ services:
         networks:
             entreprise:
                 ipv4_address: 192.168.0.2
+        volumes: 
+            - /home/cyril/certificate/ca.crt:/usr/local/share/ca-certificates/ca.crt
 
     commerciaux1:
         build: ./employes/default
@@ -64,6 +80,8 @@ services:
         networks:
             entreprise:
                 ipv4_address: 192.168.0.34
+        volumes: 
+            - /home/cyril/certificate/ca.crt:/usr/local/share/ca-certificates/ca.crt
 
     commerciaux2:
         build: ./employes/default
@@ -73,6 +91,8 @@ services:
         networks:
             entreprise:
                 ipv4_address: 192.168.0.35
+        volumes: 
+            - /home/cyril/certificate/ca.crt:/usr/local/share/ca-certificates/ca.crt
 
     secretaire:
         build: ./employes/default
@@ -82,6 +102,8 @@ services:
         networks:
             entreprise:
                 ipv4_address: 192.168.0.66
+        volumes: 
+            - /home/cyril/certificate/ca.crt:/usr/local/share/ca-certificates/ca.crt
 
     hangar:
         build: ./employes/default
@@ -91,6 +113,8 @@ services:
         networks:
             entreprise:
                 ipv4_address: 192.168.0.99
+        volumes: 
+            - /home/cyril/certificate/ca.crt:/usr/local/share/ca-certificates/ca.crt
 
     atelier:
         build: ./employes/default
@@ -100,6 +124,8 @@ services:
         networks:
             entreprise:
                 ipv4_address: 192.168.0.98
+        volumes: 
+            - /home/cyril/certificate/ca.crt:/usr/local/share/ca-certificates/ca.crt
 
     comptable1:
         build: ./employes/default
@@ -109,6 +135,8 @@ services:
         networks:
             entreprise:
                 ipv4_address: 192.168.0.130
+        volumes: 
+            - /home/cyril/certificate/ca.crt:/usr/local/share/ca-certificates/ca.crt
 
     comptable2:
         build: ./employes/default
@@ -118,6 +146,8 @@ services:
         networks:
             entreprise:
                 ipv4_address: 192.168.0.131
+        volumes: 
+            - /home/cyril/certificate/ca.crt:/usr/local/share/ca-certificates/ca.crt
 
 
 networks:

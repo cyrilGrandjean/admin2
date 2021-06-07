@@ -27,3 +27,6 @@ mail                IN                  A                   135.125.101.209
 sip                 IN                  A                   135.125.101.209
 _sip._udp   SRV 0 0 5060 sip
 _sip._tcp   SRV 0 0 5060 sip
+
+$INCLUDE Kl2-4.ephec-ti.be.zsk.key
+$INCLUDE Kl2-4.ephec-ti.be.ksk.key

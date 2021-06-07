@@ -16,6 +16,8 @@ options {
         1.0.0.1;
     };
 
-    dnssec-validation auto;
     auth-nxdomain no;
+    dnssec-enable yes;
+    dnssec-validation yes;
+    dnssec-lookaside auto;
 };
