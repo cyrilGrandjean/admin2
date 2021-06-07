@@ -48,3 +48,14 @@ gen-dnssec:
 	docker exec -ti dns dnssec-keygen -f KSK -a NSEC3RSASHA1 -b 4096 -n ZONE l2-4.ephec-ti.be
 	docker exec -ti dns mv Kl2-4.ephec-ti.be.+007+*.key Kl2-4.ephec-ti.be.ksk.key
 	docker exec -ti dns mv Kl2-4.ephec-ti.be.+007+*.private Kl2-4.ephec-ti.be.ksk.private
+setup-ssl-apache:
+	sudo docker run -v /home/cyril/certificate:/certs \
+	-e SSL_SUBJECT=www.local \
+	-e SSL_KEY=apache.key \
+	-e SSL_CERT=apache.crt \
+	-e SSL_CSR=apache.csr \
+	-e CA_KEY=ca.key \
+	-e CA_CERT=ca.crt \
+	-e CA_EXPIRE=365 \
+	-e SSL_EXPIRE=365 \
+	paulczar/omgwtfssl
