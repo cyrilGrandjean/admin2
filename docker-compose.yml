@@ -127,6 +127,24 @@ services:
                 ipv4_address: 192.168.0.131
         volumes: 
             - /home/cyril/certificate/ca.crt:/etc/ssl/certs/ca.crt
+    
+    mail:
+        build:
+            context: ./Mails
+            dockerfile: Dockerfile
+        ports:
+            - "25:25"
+            - "143:143"
+            - "465:465"
+            - "587:587"
+            - "993:993"
+        networks:
+            dmz_net:
+                ipv4_address: 192.168.0.3
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+        hostname: mail
+        container_name: mailaout
 
 
 networks:
