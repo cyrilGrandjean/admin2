@@ -52,7 +52,6 @@ RUN sievec /var/lib/dovecot/sieve/default.sieve
 RUN chown -R vhosts:vhosts /var/lib/dovecot/sieve/*
 RUN chmod a+x /var/lib/dovecot
 
-
 # lance le docker
 
 CMD ["sh", "-c", "service mysql start; mysql -u root < config-sql/create-db.sql; mysql -u root < config-sql/create-users.sql; service postfix start; service dovecot start; tail -F /var/log/mail.log"]
