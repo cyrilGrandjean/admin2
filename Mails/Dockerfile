@@ -31,6 +31,7 @@ RUN postmap /etc/postfix/generic
 
 #Installation de Dovecot (Pour IMAP)
 
+RUN apt-get update
 RUN apt-get install -y dovecot-core dovecot-imapd dovecot-mysql
 RUN apt-get install -y dovecot-sieve dovecot-managesieved
 
