@@ -137,8 +137,8 @@ services:
             - "143:143"
             - "465:465"
             - "587:587"
-
-            networks:
+            - "993:993"
+        networks:
             entreprise:
                 ipv4_address: 192.168.0.3
         environment:
