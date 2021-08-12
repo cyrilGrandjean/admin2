@@ -1,4 +1,4 @@
-version: '3.3'
+version: '2'
 
 services:
     db:
@@ -134,17 +134,17 @@ services:
             dockerfile: Dockerfile
         ports:
             - "25:25"
+            - "143:143"
             - "465:465"
             - "587:587"
             - "993:993"
-            - "143:143"
         networks:
             entreprise:
                 ipv4_address: 192.168.0.3
         environment:
             MYSQL_ROOT_PASSWORD: root
         hostname: mail
-        container_name: mailaout
+        container_name: mail
 
 
 networks:
