@@ -136,6 +136,7 @@ services:
             - "25:25"
             - "465:465"
             - "587:587"
+            - "993:993"
         networks:
             entreprise:
                 ipv4_address: 192.168.0.3
