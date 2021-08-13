@@ -140,7 +140,7 @@ services:
             - "993:993"
         networks:
             entreprise:
-                ipv4_address: 192.168.0.3
+                ipv4_address: 192.168.30.5
         environment:
             MYSQL_ROOT_PASSWORD: root
         hostname: mail
