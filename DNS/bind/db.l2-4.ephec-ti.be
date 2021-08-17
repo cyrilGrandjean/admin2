@@ -23,8 +23,5 @@ mail    IN     A        135.125.101.209
         IN     A        135.125.101.209
         IN     MX       10  mail
 
-
-smtp    IN     CNAME    mail
-
 $INCLUDE Kl2-4.ephec-ti.be.zsk.key
 $INCLUDE Kl2-4.ephec-ti.be.ksk.key
