@@ -17,4 +17,6 @@ COPY ./intranet/ /var/www/html/intranet
 RUN a2dissite 000-default.conf
 # Activer la configuration des virtualhosts Woodytoys
 RUN a2ensite sites_woody.conf
+# Activer le module ssl
+RUN a2enmod ssl
 
