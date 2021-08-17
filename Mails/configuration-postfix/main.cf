@@ -25,6 +25,7 @@ smtpd_relay_restrictions = permit_mynetworks permit_sasl_authenticated defer_una
 myhostname = mail.l2-4.ephec-ti.be
 # Domaine du serveur mail
 mydomain = l2-4.ephec-ti.be
+relay_domains = $mydestination
 alias_maps = hash:/etc/aliases
 alias_database = hash:/etc/aliases
 myorigin = l2-4.ephec-ti.be
@@ -37,7 +38,28 @@ inet_protocols = all
 virtual_mailbox_domains = mysql:/etc/postfix/mysql-virtual-mailbox-domains.cf
 virtual_mailbox_base = /var/mail/vhosts
 virtual_mailbox_maps = mysql:/etc/postfix/mysql-virtual-mailbox-maps.cf
-virtual_minimum_uid = 100
+virtual_minimum_uid = 5000
 virtual_uid_maps = static:5000
 virtual_gid_maps = static:5000
 smtp_generic_maps = hash:/etc/postfix/generic
+virtual_mailbox_limit = 512000000
+# check utility
+virtual_transport = virtual
+local_transport = virtual
+local_recipient_maps = $virtual_mailbox_maps
+transport_maps = hash:/etc/postfix/transport
+smtpd_sasl_security_options = noanonymous
+smtpd_sasl_tls_security_options = $smtpd_sasl_security_options
+smtpd_tls_received_header = yes
+smtpd_sasl_local_domain = $mydomain
+smtpd_tls_loglevel = 1
+smtp_tls_security_level = may
+smtp_tls_loglevel = 1
+
+
+
+
+
+
+
+
