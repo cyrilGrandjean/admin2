@@ -21,9 +21,9 @@ smtpd_recipient_restrictions = permit_mynetworks permit_sasl_authenticated rejec
 
 # Configuration Principale
 smtpd_relay_restrictions = permit_mynetworks permit_sasl_authenticated defer_unauth_destination
-#Nom du serveur mail
+# Nom du serveur mail
 myhostname = mail.l2-4.ephec-ti.be
-#Domaine du serveur mail
+# Domaine du serveur mail
 mydomain = l2-4.ephec-ti.be
 alias_maps = hash:/etc/aliases
 alias_database = hash:/etc/aliases
