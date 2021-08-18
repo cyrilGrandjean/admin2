@@ -61,7 +61,7 @@ RUN apt install postfix-policyd-spf-python -y
 
 # installation DKIM
 
-RUN  apt install opendkim opendkim-tools
+RUN  apt install opendkim opendkim-tools -y
 RUN  gpasswd -a postfix opendkim
 COPY secu-mail/opendkim.conf /etc/opendkim.conf
 RUN mkdir /etc/opendkim 
