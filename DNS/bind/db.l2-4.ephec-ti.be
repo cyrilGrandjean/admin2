@@ -22,6 +22,7 @@ mail    IN     A        135.125.101.209
 @       IN     NS       ns
         IN     A        135.125.101.209
         IN     MX       10  mail
+@       IN     TXT      "v=spf1 include:mail.l2-4.ephec-ti.be ip4:135.125.101.209
 
 $INCLUDE Kl2-4.ephec-ti.be.zsk.key
 $INCLUDE Kl2-4.ephec-ti.be.ksk.key
