@@ -155,6 +155,7 @@ services:
             MYSQL_ROOT_PASSWORD: root
         hostname: mail
         container_name: mail
+        stdin: true
 
 
 networks:

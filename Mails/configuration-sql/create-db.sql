@@ -1,4 +1,4 @@
-create database maildb;
+create database if not exists maildb;
 
 GRANT ALL PRIVILEGES ON maildb.* to 'mailUser'@'localhost' identified by 'root';
 
@@ -6,13 +6,13 @@ FLUSH PRIVILEGES;
 
 use maildb;
 
-CREATE TABLE `virtual_domains` (
+CREATE TABLE IF NOT EXISTS `virtual_domains` (
 `id` INT NOT NULL AUTO_INCREMENT,
 `name` VARCHAR(50) NOT NULL,
 PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE `virtual_users` (
+CREATE TABLE IF NOT EXISTS `virtual_users` (
 `id` INT NOT NULL AUTO_INCREMENT,
 `domain_id` INT NOT NULL,
 `password` VARCHAR(106) NOT NULL,
