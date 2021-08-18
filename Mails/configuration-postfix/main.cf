@@ -1,25 +1,47 @@
+# CONFIG POSTFIX
+# smtpd: daemon qui gere les mails entrants et le routing interne
+# smtp: daemon qui gere les mails sortants
+# Bannière Postfix
 smtpd_banner = $myhostname ESMTP $mail_name (Ubuntu)
+# Active les notifications pour les utilisateurs locaux, peut affecter les performances
 biff = no
+# Permet de ne pas spécifié le nom de domaine complet lors de l'envoi de mail en local 
 append_dot_mydomain = no
+# Emplacement du fichier readme
 readme_directory = no
+# Permet a Postfix de fonctionner avec des parametres d anciennes versions pour permettre la compatibilite apres une mise a jour (par defaut=0) 
 compatibility_level = 2
 
 # Configuration SSL - Security
+# Emplacement du certificat RSA au format PEM
 smtpd_tls_cert_file=/etc/ssl/certs/ssl-cert-snakeoil.pem
+# Emplacement de la cle du certificat RSA
 smtpd_tls_key_file=/etc/ssl/private/ssl-cert-snakeoil.key
+# Prise en charge de STARTTLS mais n'exige pas que les clients utilisent le cryptage TLS
 smtpd_use_tls=yes
+# Fichier contenant la cache de session TLS du serveur SMTP
 smtpd_tls_session_cache_database = btree:${data_directory}/smtpd_scache
 smtp_tls_session_cache_database = btree:${data_directory}/smtp_scache
 
 # Configuration SASL
+# Simple Authentification and Security Layer est un framework pour l authentification et la securite de donnes
 smtpd_sasl_type = dovecot
+# chemin sasl
 smtpd_sasl_path = private/auth
+# Activer l'authentification SASL sur le serveur SMTP
 smtpd_sasl_auth_enable = yes
+# Définis le niveau de securite may: use STARTTLS aux clients SMTP distants
 smtpd_tls_security_level = may
+# Force le tls
 smtpd_tls_auth_only = yes
-smtpd_recipient_restrictions = permit_mynetworks permit_sasl_authenticated reject_unauth_destination
+# Restreindre les adresses des mails rentrants
+smtpd_recipient_restrictions = permit_mynetworks , permit_sasl_authenticated , reject_unauth_destination
+# permit_mynetworks: permet n importe quel reseau dans $mynetworks
+# permit_sasl_authenticated: permet les mails entrant 
+# reject_unauth_destination: 
 
 # Configuration Principale
+# Autorisation des relais
 smtpd_relay_restrictions = permit_mynetworks permit_sasl_authenticated defer_unauth_destination
 # Nom du serveur mail
 myhostname = mail.l2-4.ephec-ti.be
@@ -47,7 +69,7 @@ virtual_mailbox_limit = 512000000
 virtual_transport = virtual
 local_transport = virtual
 local_recipient_maps = $virtual_mailbox_maps
-transport_maps = hash:/etc/postfix/transport
+transport_maps = hash:/etc/postfix/generic
 smtpd_sasl_security_options = noanonymous
 smtpd_sasl_tls_security_options = $smtpd_sasl_security_options
 smtpd_tls_received_header = yes
