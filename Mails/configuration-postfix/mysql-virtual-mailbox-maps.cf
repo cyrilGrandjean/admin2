@@ -4,5 +4,5 @@ password = root
 hosts = 127.0.0.1
 dbname = maildb
 table = virtual_users
-select_field = maildir
-where_field = email
+select_field = id
+where_field = name

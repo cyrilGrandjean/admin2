@@ -42,7 +42,7 @@ smtpd_recipient_restrictions = permit_mynetworks , permit_sasl_authenticated , r
 
 # Configuration Principale
 # Autorisation des relais
-smtpd_relay_restrictions = permit_mynetworks permit_sasl_authenticated defer_unauth_destination
+smtpd_relay_restrictions = permit_mynetworks , permit_sasl_authenticated , defer_unauth_destination
 # Nom du serveur mail
 myhostname = mail.l2-4.ephec-ti.be
 # Domaine du serveur mail
