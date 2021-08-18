@@ -1,6 +1,8 @@
 #Information de connection a la database pour le domaine virtuel
 user = mailUser
 password = root
-hosts = 127.0.0.1
+hosts = localhost
 dbname = maildb
-query = SELECT 1 FROM virtual_domains WHERE name='l2-4.ephec-ti.be'
+table = virtual_domains
+select_field = id
+where_field = name
