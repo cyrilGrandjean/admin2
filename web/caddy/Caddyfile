@@ -1,3 +1,8 @@
 www.l2-4.ephec-ti.be, b2b.l2-4.ephec-ti.be {
     reverse_proxy 192.168.30.3:80
+	log {
+		output file /var/log/access.log
+		level debug
+		format single_field common_log
+	}
 }
