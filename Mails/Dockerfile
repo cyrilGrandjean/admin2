@@ -57,7 +57,7 @@ RUN chmod a+x /var/lib/dovecot
 
 # installer SPF
 
-RUN apt install postfix-policyd-spf-python
+RUN apt install postfix-policyd-spf-python -y
 
 # installation DKIM
 
