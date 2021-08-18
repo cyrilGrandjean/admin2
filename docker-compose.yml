@@ -35,6 +35,8 @@ services:
         networks:
             entreprise:
                 ipv4_address: 192.168.30.6
+        volumes:
+            - /var/log/access.log:/var/log/access.log
 
     dns:
         build: ./DNS
