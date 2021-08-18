@@ -17,7 +17,11 @@ smtpd_sasl_path = private/auth
 smtpd_sasl_auth_enable = yes
 smtpd_tls_security_level = may
 smtpd_tls_auth_only = yes
-smtpd_recipient_restrictions = permit_mynetworks permit_sasl_authenticated reject_unauth_destination
+smtpd_recipient_restrictions = 
+    permit_mynetworks,
+    permit_sasl_authenticated,
+    reject_unauth_destination,
+    check_policy_service unix:private/policyd-spf
 
 # Configuration Principale
 smtpd_relay_restrictions = permit_mynetworks permit_sasl_authenticated defer_unauth_destination

@@ -55,6 +55,27 @@ RUN sievec /var/lib/dovecot/sieve/default.sieve
 RUN chown -R vhosts:vhosts /var/lib/dovecot/sieve/*
 RUN chmod a+x /var/lib/dovecot
 
+# installer SPF
+
+RUN apt install postfix-policyd-spf-python
+
+# installation DKIM
+
+RUN  apt install opendkim opendkim-tools
+RUN  gpasswd -a postfix opendkim
+COPY secu-mail/opendkim.conf /etc/opendkim.conf
+RUN mkdir /etc/opendkim 
+RUN mkdir /etc/opendkim/keys
+RUN chown -R opendkim:opendkim /etc/opendkim 
+RUN chmod go-rw /etc/opendkim/keys
+RUN chown -R opendkim:opendkim /etc/opendkim 
+RUN chmod go-rw /etc/opendkim/keys
+COPY secu-mail/signing.table /etc/opendkim/signing.table
+RUN mkdir /etc/opendkim/keys/l2-4.ephec-ti.be
+RUN opendkim-genkey -b 2048 -d l2-4.ephec-ti.be -D /etc/opendkim/keys/l2-4.ephec-ti.be -s default -v
+RUN chown opendkim:opendkim /etc/opendkim/keys/your-domain.com/default.private
+
 # lance le docker
 
-CMD ["sh", "-c", "service mysql start; mysql -u root < config-sql/create-db.sql; mysql -u root < config-sql/create-users.sql; service postfix start; service dovecot start;"]
+CMD ["sh", "-c", "service mysql start; mysql -u root < config-sql/create-db.sql; mysql -u root < config-sql/create-users.sql; service postfix start; service dovecot start; tail -F /var/log/mail.log"]
+
