@@ -73,7 +73,7 @@ RUN chmod go-rw /etc/opendkim/keys
 COPY secu-mail/signing.table /etc/opendkim/signing.table
 RUN mkdir /etc/opendkim/keys/l2-4.ephec-ti.be
 RUN opendkim-genkey -b 2048 -d l2-4.ephec-ti.be -D /etc/opendkim/keys/l2-4.ephec-ti.be -s default -v
-RUN chown opendkim:opendkim /etc/opendkim/keys/your-domain.com/default.private
+RUN chown opendkim:opendkim /etc/opendkim/keys/l2-4.ephec-ti.be/default.private
 
 # lance le docker
 
