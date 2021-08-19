@@ -55,9 +55,10 @@ RUN sievec /var/lib/dovecot/sieve/default.sieve
 RUN chown -R vhosts:vhosts /var/lib/dovecot/sieve/*
 RUN chmod a+x /var/lib/dovecot
 
-# installer SPF
+# installation SPF
 
 RUN apt install postfix-policyd-spf-python -y
+COPY bind/db.l2-4.ephec-ti.be /etc/bind/db.l2-4.ephec-ti.be
 
 # installation DKIM
 
@@ -76,6 +77,19 @@ COPY secu-mail/trusted.hosts /etc/opendkim/trusted.hosts
 RUN mkdir /etc/opendkim/keys/l2-4.ephec-ti.be
 RUN opendkim-genkey -b 2048 -d l2-4.ephec-ti.be -D /etc/opendkim/keys/l2-4.ephec-ti.be -s default -v
 RUN chown opendkim:opendkim /etc/opendkim/keys/l2-4.ephec-ti.be/default.private
+
+# Insatllation DMARC
+
+RUN apt-get install opendmarc -y -n
+
+# Insatllation SpamAssassin
+
+RUN apt-get install spamassassin spamc -y
+RUN groupadd spamd
+RUN useradd -g spamd -s /bin/false -d /var/log/spamassassin spamd
+RUN mkdir /var/log/spamassassin
+RUN chown spamd:spamd /var/log/spamassassin
+COPY secu-mail/spamassassin /etc/default/spamassassin
 
 # lance le docker
 
