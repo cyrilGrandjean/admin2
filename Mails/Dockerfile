@@ -70,5 +70,9 @@ RUN mkdir /etc/opendkim/keys/l2-4.ephec-ti.be
 RUN opendkim-genkey -b 2048 -d l2-4.ephec-ti.be -D /etc/opendkim/keys/l2-4.ephec-ti.be -s default -v
 RUN chown opendkim:opendkim /etc/opendkim/keys/l2-4.ephec-ti.be/default.private
 
+# Insatllation DMARC
+
+# RUN apt-get install opendmarc -y
+
 # Commande afin de lancer les différents services
 CMD ["sh", "-c", "service mysql start; mysql -u root < config-sql/create-db.sql; mysql -u root < config-sql/create-users.sql; service postfix start; service dovecot start; tail -F /var/log/mail.log"]
