@@ -58,7 +58,6 @@ RUN chmod a+x /var/lib/dovecot
 # installation SPF
 
 RUN apt install postfix-policyd-spf-python -y
-COPY bind/db.l2-4.ephec-ti.be /etc/bind/db.l2-4.ephec-ti.be
 
 # installation DKIM
 
