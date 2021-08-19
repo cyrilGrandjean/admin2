@@ -72,7 +72,7 @@ RUN chown opendkim:opendkim /etc/opendkim/keys/l2-4.ephec-ti.be/default.private
 
 # Insatllation DMARC
 
-RUN apt-get install opendmarc -y
+# RUN apt-get install opendmarc -y
 RUN mkdir /etc/opendmarc/
 COPY secu-mail/ignore.hosts /etc/opendmarc/ignore.hosts
 
