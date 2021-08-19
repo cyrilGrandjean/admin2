@@ -48,5 +48,9 @@ RUN sievec /var/lib/dovecot/sieve/default.sieve
 RUN chown -R vhosts:vhosts /var/lib/dovecot/sieve/*
 RUN chmod a+x /var/lib/dovecot
 
+# installation SPF
+
+RUN apt install postfix-policyd-spf-python -y
+
 # Commande afin de lancer les différents services
 CMD ["sh", "-c", "service mysql start; mysql -u root < config-sql/create-db.sql; mysql -u root < config-sql/create-users.sql; service postfix start; service dovecot start; tail -F /var/log/mail.log"]
