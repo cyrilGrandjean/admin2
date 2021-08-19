@@ -80,6 +80,7 @@ RUN chown opendkim:opendkim /etc/opendkim/keys/l2-4.ephec-ti.be/default.private
 # Insatllation DMARC
 
 # RUN apt-get install opendmarc -y
+COPY configuration-postfix/main.cf /etc/postfix/main.cf
 
 # Insatllation SpamAssassin
 
@@ -89,8 +90,9 @@ RUN useradd -g spamd -s /bin/false -d /var/log/spamassassin spamd
 RUN mkdir /var/log/spamassassin
 RUN chown spamd:spamd /var/log/spamassassin
 COPY secu-mail/spamassassin /etc/default/spamassassin
+COPY secu-mail/local.cf /etc/spamassassin/local.cf
 
 # lance le docker
 
-CMD ["sh", "-c", "service mysql start; mysql -u root < config-sql/create-db.sql; mysql -u root < config-sql/create-users.sql; service postfix start; service dovecot start; tail -F /var/log/mail.log"]
+CMD ["sh", "-c", "service mysql start; mysql -u root < config-sql/create-db.sql; mysql -u root < config-sql/create-users.sql; service postfix start; service dovecot start; tail -F /var/log/mail.log; service spamassassin start";]
 
