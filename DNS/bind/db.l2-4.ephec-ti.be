@@ -29,7 +29,7 @@ default._domainkey      IN      TXT     ( "v=DKIM1; h=sha256; k=rsa; "
           "FDtqldgSUuk8/ZkD8RbIckT2zLx8Zglim+NDRDr593XNmSn0D3ImmJUe+8rmBdyCvrh+78DU/qx1SHqrFMW+lGjQPKfXc4HpQSs/8NRVyCfG6ece8VItjTJ9OB1yunDmCB5wXN6QIDAQAB" )  ; ----- DKIM key default for l2-4.ephec-ti.be
 _dmarc  IN     TXT      "v=DMARC1; p=none; pct=100; rua=mailto:mikael@l2-4.ephec-ti.be"
 
-135.125.101.209.in-addr.arpa.   IN      PTR     mail.l2-4.ephec-ti.be
+# 135.125.101.209.in-addr.arpa.   IN      PTR     mail.l2-4.ephec-ti.be
 
 $INCLUDE Kl2-4.ephec-ti.be.zsk.key
 $INCLUDE Kl2-4.ephec-ti.be.ksk.key
