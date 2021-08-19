@@ -35,7 +35,7 @@ smtpd_tls_security_level = may
 # Force le tls
 smtpd_tls_auth_only = yes
 # Restreindre les adresses des mails rentrants
-smtpd_recipient_restrictions = permit_mynetworks , permit_sasl_authenticated , reject_unauth_destination
+smtpd_recipient_restrictions = permit_mynetworks , permit_sasl_authenticated , reject_unauth_destination , check_policy_service unix:private/policyd-spf
 # permit_mynetworks: permet n importe quel reseau dans $mynetworks
 # permit_sasl_authenticated: permet les mails entrant 
 # reject_unauth_destination: 
