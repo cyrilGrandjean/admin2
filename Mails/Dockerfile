@@ -52,5 +52,23 @@ RUN chmod a+x /var/lib/dovecot
 
 RUN apt install postfix-policyd-spf-python -y
 
+# installation DKIM
+
+RUN  apt install opendkim opendkim-tools -y
+RUN  gpasswd -a postfix opendkim
+COPY secu-mail/opendkim.conf /etc/opendkim.conf
+RUN mkdir /etc/opendkim 
+RUN mkdir /etc/opendkim/keys
+RUN chown -R opendkim:opendkim /etc/opendkim 
+RUN chmod go-rw /etc/opendkim/keys
+RUN chown -R opendkim:opendkim /etc/opendkim 
+RUN chmod go-rw /etc/opendkim/keys
+COPY secu-mail/signing.table /etc/opendkim/signing.table
+COPY secu-mail/key.table /etc/opendkim/key.table
+COPY secu-mail/trusted.hosts /etc/opendkim/trusted.hosts
+RUN mkdir /etc/opendkim/keys/l2-4.ephec-ti.be
+RUN opendkim-genkey -b 2048 -d l2-4.ephec-ti.be -D /etc/opendkim/keys/l2-4.ephec-ti.be -s default -v
+RUN chown opendkim:opendkim /etc/opendkim/keys/l2-4.ephec-ti.be/default.private
+
 # Commande afin de lancer les différents services
 CMD ["sh", "-c", "service mysql start; mysql -u root < config-sql/create-db.sql; mysql -u root < config-sql/create-users.sql; service postfix start; service dovecot start; tail -F /var/log/mail.log"]
