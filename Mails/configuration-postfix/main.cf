@@ -1,3 +1,4 @@
+# créer Postmaster
 # CONFIG POSTFIX
 # smtpd: daemon qui gere les mails entrants et le routing interne
 # smtp: daemon qui gere les mails sortants
@@ -74,6 +75,7 @@ smtpd_sasl_local_domain = $mydomain
 smtpd_tls_loglevel = 1
 smtp_tls_security_level = may
 smtp_tls_loglevel = 1
+maillog_file = /var/log/postfix.log
 
 
 

@@ -10,18 +10,20 @@ $TTL 86400                   ; default time to live
         )
 
         IN      NS      ns.l2-4.ephec-ti.be.
-        IN      MX  10  mail
+        IN      MX  10  mail.l2-4.ephec-ti.be.
 ns      IN      A       135.125.101.209
 
+        IN      MX  10  mail
 
 ns      IN     A        135.125.101.209
 www     IN     A        135.125.101.209
 b2b     IN     CNAME    www
 
 mail    IN     A        135.125.101.209
+smtp    IN     CNAME    mail
 @       IN     NS       ns
         IN     A        135.125.101.209
-        IN     MX       10  mail
+
 
 $INCLUDE Kl2-4.ephec-ti.be.zsk.key
 $INCLUDE Kl2-4.ephec-ti.be.ksk.key
