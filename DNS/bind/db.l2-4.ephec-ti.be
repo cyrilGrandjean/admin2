@@ -22,7 +22,7 @@ mail    IN     A        135.125.101.209
 @       IN     NS       ns
         IN     A        135.125.101.209
         IN     MX       10  mail
-@	IN	TXT	"v=spf1 include:mail.domaine ip4:l2-4.ephec-ti.be ~all"
+@	IN	TXT	"v=spf1 include:mail.l2-4.ephec-ti.be ip4:135.125.101.209 ~all"
 
 default._domainkey      IN      TXT     ( "v=DKIM1; h=sha256; k=rsa; "
           "p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA2KeZfKbTtVMph8wTnboA68Vy1LDN+LsNb6UfqZrnu+bYudhWrstvS9PDn3rmn2X7AEsDj9IInFPZl69CqxgZsHUpzMSa0ytOlVbm0SdhrJr+DlMfbO3QiOnrcgNTbQbMgdHUOixvzR0JOvbiagEfxGJ94i27qIbFIYQ59UPuman+Bpaa0ycSB3gi9W6wcQxvUvRk51YN7zloxG"
